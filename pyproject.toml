@@ -8,6 +8,7 @@ dependencies = [
     "environs>=14.3.0",
     "fastapi[standard]>=0.118.0",
     "langchain>=0.3.27",
+    "langchain-cerebras>=0.5.0",
     "langgraph>=0.6.8",
     "pydantic>=2.11.10",
 ]
