@@ -1,0 +1,13 @@
+[project]
+name = "simple-web-search-agent"
+version = "0.1.0"
+description = "Simple Web Search Agent with GPT-OSS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "environs>=14.3.0",
+    "fastapi[standard]>=0.118.0",
+    "langchain>=0.3.27",
+    "langgraph>=0.6.8",
+    "pydantic>=2.11.10",
+]
