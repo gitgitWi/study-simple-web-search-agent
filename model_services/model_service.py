@@ -25,16 +25,10 @@ class ModelService(ABC):
     model: Union[Any, None] = None
     model_options: ModelOptions = ModelOptions()
 
-    @abstractmethod
-    def set_model(self) -> Self:
-        raise NotImplementedError()
-
-    @classmethod
     def _set_service_key(self, api_key: SecretStr) -> Self:
         self.model_options = self.model_options.model_copy(update={"api_key": api_key})
         return self
 
-    @classmethod
     def set_model_options(
         self,
         model_name: str,
@@ -56,7 +50,10 @@ class ModelService(ABC):
         self.model_options = ModelOptions.model_validate(merged_option)
         return self
 
-    @classmethod
+    @abstractmethod
+    def set_model(self) -> Self:
+        raise NotImplementedError()
+
     def pre_invoke(self) -> Self:
         if not self.model:
             raise ValueError("Model is not set")
