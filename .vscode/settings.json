@@ -1,0 +1,6 @@
+{
+	"python.languageServer": "None",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.ruff": "explicit"
+	}
+}
