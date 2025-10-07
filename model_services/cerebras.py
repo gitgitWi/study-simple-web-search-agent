@@ -1,5 +1,6 @@
 from enum import StrEnum
 
+from langchain.schema import HumanMessage
 from langchain_cerebras import ChatCerebras
 from langchain_core.messages import BaseMessage
 
@@ -24,10 +25,12 @@ class CerebrasService(ModelService):
         return self
 
     async def invoke(self, query: str) -> BaseMessage | dict:
-        super().pre_invoke()
+        self.pre_invoke()
 
         try:
-            result: BaseMessage = await self.model.ainvoke(query)
+            result: BaseMessage = await self.model.ainvoke(
+                [HumanMessage(content=query)]
+            )
             return result
         except Exception as e:
             print("[CerebrasService] ERROR", e)
